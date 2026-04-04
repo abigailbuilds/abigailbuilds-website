@@ -8,7 +8,7 @@ const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !statsAnimated) {
             statsAnimated = true;
-            statNumbers.forEach(stat => {
+            statNumbers.forEach((stat, index) => {
                 const target = parseInt(stat.getAttribute('data-target'));
                 const duration = 2000; // 2 seconds
                 const increment = target / (duration / 16); // 60fps
@@ -20,7 +20,14 @@ const statsObserver = new IntersectionObserver((entries) => {
                         stat.textContent = Math.floor(current);
                         requestAnimationFrame(updateCounter);
                     } else {
-                        stat.textContent = target;
+                        // Add suffix based on which stat it is
+                        if (index === 1) {
+                            stat.textContent = target + '+'; // Projects Delivered
+                        } else if (index === 2) {
+                            stat.textContent = target + '%'; // On Time & On Budget
+                        } else {
+                            stat.textContent = target;
+                        }
                     }
                 };
                 
