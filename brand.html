@@ -150,9 +150,31 @@
             font-size: 0.875rem;
         }
 
+        /* Logo Header */
+        .brand-header {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            margin: -2rem -2rem 2rem -2rem;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
+            }
+
+            .brand-header {
+                margin: -1rem -1rem 1rem -1rem;
+            }
+
+            .logo {
+                height: 40px;
             }
 
             h1 {
@@ -166,12 +188,12 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Abigail Builds</h1>
-            <p class="subtitle">Brand Color Palette</p>
-        </header>
+    <!-- Brand Logo Header -->
+    <div class="brand-header">
+        <img src="images/brand/logo-horizontal.png" alt="Abigail Builds" class="logo">
+    </div>
 
+    <div class="container">
         <!-- Primary Colors -->
         <section class="color-section">
             <h2 class="section-title">Primary Colors</h2>
