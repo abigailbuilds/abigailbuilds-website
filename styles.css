@@ -936,7 +936,7 @@ section:nth-child(8) { animation-delay: 0.7s; }
 }
 
 .service-card:hover .service-icon svg {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1);
     color: var(--color-accent);
 }
 
