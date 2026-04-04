@@ -175,6 +175,46 @@ body {
     min-height: 80vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Particle Effect */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
 }
 
 .hero-content {
@@ -182,6 +222,8 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-headline {
@@ -393,6 +435,44 @@ body {
 .why-section {
     padding: var(--spacing-2xl) 0;
     background-color: var(--color-background-alt);
+}
+
+/* Stats Row */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg) 0;
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, rgba(217, 243, 238, 0.3) 100%);
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(15, 95, 92, 0.1);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    font-weight: 500;
 }
 
 .why-grid {
@@ -701,8 +781,206 @@ body {
 }
 
 /* ========================================
-   RESPONSIVE DESIGN
+   DYNAMIC EFFECTS & ANIMATIONS
    ======================================== */
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    z-index: 10000;
+    transition: width 0.1s ease;
+}
+
+/* Enhanced Card Transitions */
+.service-card,
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
+    will-change: transform;
+}
+
+.service-card:hover,
+.project-card:hover {
+    box-shadow: 0 20px 40px rgba(15, 95, 92, 0.15);
+}
+
+/* Hero Icon Animation */
+.hero-icon {
+    transition: transform 0.1s ease;
+    will-change: transform;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Typing Animation Cursor */
+.hero-headline {
+    position: relative;
+}
+
+.hero-headline::after {
+    content: '|';
+    position: absolute;
+    right: -10px;
+    animation: blink 1s step-end infinite;
+    opacity: 0;
+}
+
+.hero-headline.typing::after {
+    opacity: 1;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Process Steps Entrance */
+.process-step {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.process-step:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.process-step:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.process-step:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+/* Button Ripple Effect */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Gradient Background Effect */
+:root {
+    --gradient-hue: 175;
+}
+
+body {
+    background: linear-gradient(
+        to bottom,
+        var(--color-background) 0%,
+        hsl(var(--gradient-hue), 30%, 97%) 50%,
+        var(--color-background) 100%
+    );
+    transition: background 0.3s ease;
+}
+
+/* Section Reveal Animation */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section:nth-child(1) { animation-delay: 0s; }
+section:nth-child(2) { animation-delay: 0.1s; }
+section:nth-child(3) { animation-delay: 0.2s; }
+section:nth-child(4) { animation-delay: 0.3s; }
+section:nth-child(5) { animation-delay: 0.4s; }
+section:nth-child(6) { animation-delay: 0.5s; }
+section:nth-child(7) { animation-delay: 0.6s; }
+section:nth-child(8) { animation-delay: 0.7s; }
+
+/* Service Icon Pulse on Hover */
+.service-icon svg {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover .service-icon svg {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--color-accent);
+}
+
+/* CTA Button Shake Effect */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.btn-primary:hover {
+    animation: shake 0.5s ease;
+}
+
+/* Smooth Background Transitions */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Loading State */
+body.loaded section {
+    animation-play-state: running;
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .custom-cursor {
+        display: none !important;
+    }
+    
+    .hero-icon {
+        animation: none !important;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
