@@ -14,8 +14,8 @@
     
     /* Primary Colors */
     --color-primary: #0F5F5C;           /* Deep Teal - Main brand color */
-    --color-secondary: #D9F3EE;         /* Soft Mint - Supporting color */
-    --color-accent: #F4A259;            /* Golden Apricot - Accent/CTA color */
+    --color-secondary: #b3e2da;         /* Tech Mint - Supporting color */
+    --color-accent: #d97c32;            /* Apricot Pro - Accent/CTA color */
     --color-background: #FAF9F6;        /* Off-White - Main background */
     
     /* Deep Teal Variations */
@@ -25,23 +25,24 @@
     --color-teal-darker-1: #0a4441;     /* -20% darker */
     --color-teal-darker-2: #072f2d;     /* -40% darker */
     
-    /* Soft Mint Variations */
+    /* Tech Mint Variations */
     --color-mint-lighter-2: #FFFFFF;    /* +40% lighter (white) */
     --color-mint-lighter-1: #EFF9F7;    /* +20% lighter */
-    --color-mint-base: #D9F3EE;         /* Base Soft Mint */
+    --color-mint-base: #b3e2da;         /* Base Tech Mint */
     --color-mint-darker-1: #B3E5DB;     /* -20% darker */
     --color-mint-darker-2: #8DD7C8;     /* -40% darker */
     
-    /* Golden Apricot Variations */
+    /* Apricot Pro Variations */
     --color-apricot-lighter-2: #FDD4A8; /* +40% lighter */
     --color-apricot-lighter-1: #F8BB81; /* +20% lighter */
-    --color-apricot-base: #F4A259;      /* Base Golden Apricot */
+    --color-apricot-base: #d97c32;      /* Base Apricot Pro */
     --color-apricot-darker-1: #E6803F;  /* -20% darker */
     --color-apricot-darker-2: #D85F25;  /* -40% darker */
     
     /* Semantic Color Aliases for easier use */
     --color-primary-hover: var(--color-teal-darker-1);
     --color-primary-active: var(--color-teal-darker-2);
+    --color-primary-dark: var(--color-teal-darker-1);  /* Fix missing primary-dark */
     --color-accent-hover: var(--color-apricot-darker-1);
     --color-accent-active: var(--color-apricot-darker-2);
     
@@ -72,8 +73,8 @@
     --color-primary-10: rgba(15, 95, 92, 0.1);
     --color-primary-15: rgba(15, 95, 92, 0.15);
     --color-primary-20: rgba(15, 95, 92, 0.2);
-    --color-secondary-30: rgba(217, 243, 238, 0.3);
-    --color-accent-30: rgba(244, 162, 89, 0.3);
+    --color-secondary-30: rgba(179, 226, 218, 0.3);
+    --color-accent-30: rgba(217, 124, 50, 0.3);
     --color-background-95: rgba(250, 249, 246, 0.95);
     --color-white-10: rgba(255, 255, 255, 0.1);
     --color-white-50: rgba(255, 255, 255, 0.5);
@@ -366,8 +367,9 @@ body {
 
 .btn-primary:hover {
     background-color: var(--color-primary-dark);
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 10px 20px rgba(15, 95, 92, 0.2);
 }
 
 .btn-large {
