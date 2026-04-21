@@ -205,11 +205,12 @@ if (contactForm) {
         const formData = new FormData(contactForm);
         const name = formData.get('name');
         const email = formData.get('email');
+        const serviceType = formData.get('service_type') || 'Not specified';
         const project = formData.get('project');
         
         // Create mailto link with form data
-        const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nProject Details:\n${project}`);
+        const subject = encodeURIComponent(`Free Demo Request from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nLooking for: ${serviceType}\n\nProject Details:\n${project}`);
         const mailtoLink = `mailto:hello@abigailbuilds.com?subject=${subject}&body=${body}`;
         
         // Open email client
